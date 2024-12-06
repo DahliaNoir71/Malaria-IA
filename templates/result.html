@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat de la détection - Malaria Detection</title>
+
+    <!-- Lien vers Pico CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/picocss@1.4.1/dist/pico.min.css" rel="stylesheet">
+
+    <!-- Lien vers Bootstrap pour un meilleur style -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style personnalisé -->
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .result {
+            margin-top: 30px;
+        }
+        img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container text-center">
+    <h1>Résultat de la détection de la malaria</h1>
+
+    <!-- Affichage d'alertes pour les résultats -->
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% if result %}
+    <div class="result">
+        <h3>Image téléchargée:</h3>
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Image de la cellule">
+    </div>
+
+    <div class="result">
+        <h2>Résultat: <span class="text-primary">{{ result }}</span></h2>
+    </div>
+    {% endif %}
+
+    <div>
+        <a href="/" class="btn btn-secondary">Retour à l'accueil</a>
+    </div>
+</div>
+
+</body>
+</html>

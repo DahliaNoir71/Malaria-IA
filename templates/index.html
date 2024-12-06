@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload d'image de cellule - Malaria Detection</title>
+
+    <!-- Lien vers Pico CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/picocss@1.4.1/dist/pico.min.css" rel="stylesheet">
+
+    <!-- Lien vers Bootstrap pour un meilleur style -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style personnalisé -->
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center">Upload d'image de cellule pour la détection de la malaria</h1>
+
+    <!-- Affichage d'alertes (Erreurs ou succès) -->
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        {{ success }}
+    </div>
+    {% endif %}
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="file" class="form-label">Sélectionner une image de cellule (PNG, JPG, JPEG, GIF)</label>
+            <input type="file" name="file" class="form-control" id="file" accept="image/*" required>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Uploader l'image</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
