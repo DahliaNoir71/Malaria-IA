@@ -1,9 +1,10 @@
-import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import numpy as np
+import tensorflow as tf
+from config import Config
 
-# Charger le modèle préalablement sauvegardé
-model = tf.keras.models.load_model('votre_modele.h5')
+# Load the model using the configured path
+model = tf.keras.models.load_model(Config.MODEL_PATH, compile=False)
 
 def predict_malaria(filename):
     """Effectue la prédiction sur l'image et retourne le résultat."""
