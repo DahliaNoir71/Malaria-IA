@@ -8,4 +8,4 @@ class Config:
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # Limite de taille de fichier : 16MB
 
     # Configuration pour le modèle de prédiction (si nécessaire)
-    MODEL_PATH = 'path/to/your/model.h5'  # Chemin vers le modèle enregistré
+    MODEL_PATH = 'model/model_cnn.keras'  # Chemin vers le modèle enregistré
