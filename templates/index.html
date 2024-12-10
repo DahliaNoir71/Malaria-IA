@@ -61,11 +61,9 @@
     {% if uploaded_image %}
     <div class="image-container">
         <h3>Image téléchargée :</h3>
-        <!-- Affichage de l'image téléchargée -->
         <img src="{{ uploaded_image }}" alt="Image téléchargée" class="uploaded-image">
-
         <!-- Bouton de prédiction -->
-        <form action="/predict" method="POST">
+        <form action="/predict/{{ filename }}" method="GET">
             <button type="submit" class="btn btn-success">Faire la prédiction</button>
         </form>
     </div>

@@ -19,10 +19,17 @@ def upload_file():
         return render_template('index.html', error="Veuillez sélectionner un fichier")
 
     if allowed_file(file.filename):
-        filename = save_file(file)
-        return render_template('result.html', filename=filename)
+        filename = save_file(file)  # Sauvegarde le fichier et retourne le nom
+        uploaded_image_url = f"/uploaded_file/{filename}"  # URL pour afficher l'image
+
+        return render_template('index.html',
+                               success="Fichier téléchargé avec succès.",
+                               uploaded_image=uploaded_image_url,
+                               filename=filename)
 
     return render_template('index.html', error="Fichier invalide. Veuillez télécharger une image.")
+
+
 
 @file_routes.route('/uploaded_file/<filename>')
 def uploaded_file(filename):

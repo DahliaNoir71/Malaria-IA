@@ -15,9 +15,11 @@ def predict_malaria(filename):
         img_array = np.expand_dims(img_array, axis=0)  # Ajouter une dimension pour le batch
 
         prediction = model.predict(img_array)
+        print(prediction)
         result = 'Infectée' if prediction[0] > 0.5 else 'Non infectée'
 
         return result, None  # Pas d'erreur
 
     except Exception as e:
         return None, str(e)  # Retourne l'erreur si quelque chose se passe mal
+

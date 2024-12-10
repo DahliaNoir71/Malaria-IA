@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultat de la détection - Malaria Detection</title>
+    <title>Résultat de la prédiction</title>
 
-    <!-- Lien vers Bootstrap pour un meilleur style -->
+    <!-- Lien Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Style personnalisé -->
@@ -17,42 +17,38 @@
             max-width: 600px;
             margin: auto;
         }
-        .result {
-            margin-top: 30px;
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
         }
-        img {
-            width: 100%;
-            max-width: 500px;
+        .uploaded-image {
+            max-width: 100%;
             height: auto;
-            display: block;
-            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        .prediction-label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
         }
     </style>
 </head>
 <body>
 
-<div class="container text-center">
-    <h1>Résultat de la détection de la malaria</h1>
+<div class="container">
+    <h1 class="text-center">Résultat de la prédiction</h1>
 
-    <!-- Affichage d'alertes pour les résultats -->
-    {% if error %}
-    <div class="alert alert-danger" role="alert">
-        {{ error }}
-    </div>
-    {% endif %}
-    {% if result %}
-    <div class="result">
-        <h3>Image téléchargée:</h3>
-        <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Image de la cellule">
+    <div class="image-container">
+        <h3>Image analysée :</h3>
+        <img src="{{ uploaded_image }}" alt="Image téléchargée" class="uploaded-image">
     </div>
 
-    <div class="result">
-        <h2>Résultat: <span class="text-primary">{{ result }}</span></h2>
+    <div class="text-center">
+        <p class="prediction-label">Résultat : {{ result }}</p>
     </div>
-    {% endif %}
 
-    <div>
-        <a href="/" class="btn btn-secondary">Retour à l'accueil</a>
+    <div class="text-center mt-3">
+        <a href="/" class="btn btn-primary">Retour à l'accueil</a>
     </div>
 </div>
 

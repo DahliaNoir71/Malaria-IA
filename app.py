@@ -1,3 +1,6 @@
+import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
 from flask import Flask
 from routes.file_routes import file_routes
 from routes.predict_routes import predict_routes

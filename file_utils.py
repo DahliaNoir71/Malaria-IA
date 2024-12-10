@@ -1,6 +1,7 @@
 import os
 from werkzeug.utils import secure_filename
 from flask import current_app
+from config import Config
 
 def allowed_file(filename):
     """Vérifie si le fichier a une extension autorisée."""
@@ -8,9 +9,11 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
 
 def save_file(file):
-    """Sauvegarde le fichier téléchargé et retourne son nom de fichier."""
-    upload_folder = current_app.config['UPLOAD_FOLDER']
+    # Sécurisez le nom du fichier
     filename = secure_filename(file.filename)
-    filepath = os.path.join('static/uploads', filename)
-    file.save(filepath)
+    file_path = os.path.join(Config.UPLOAD_FOLDER, filename)
+
+    # Sauvegarde du fichier
+    file.save(file_path)
     return filename
+
