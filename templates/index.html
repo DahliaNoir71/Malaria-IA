@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload d'image de cellule - Malaria Detection</title>
 
-    <!-- Lien vers Pico CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picocss@1.4.1/dist/pico.min.css" integrity="sha384-..." crossorigin="anonymous">
-    <script>
-        // Add this script tag to fix the MIME type issue
-        document.querySelector('link[href="https://cdn.jsdelivr.net/npm/picocss@1.4.1/dist/pico.min.css"]').setAttribute('type', 'text/css');
-    </script>
-
     <!-- Lien vers Bootstrap pour un meilleur style -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,6 +19,15 @@
         }
         .form-group {
             margin-top: 20px;
+        }
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .uploaded-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -55,6 +57,19 @@
             <button type="submit" class="btn btn-primary">Uploader l'image</button>
         </div>
     </form>
+
+    {% if uploaded_image %}
+    <div class="image-container">
+        <h3>Image téléchargée :</h3>
+        <!-- Affichage de l'image téléchargée -->
+        <img src="{{ uploaded_image }}" alt="Image téléchargée" class="uploaded-image">
+
+        <!-- Bouton de prédiction -->
+        <form action="/predict" method="POST">
+            <button type="submit" class="btn btn-success">Faire la prédiction</button>
+        </form>
+    </div>
+    {% endif %}
 </div>
 
 </body>
