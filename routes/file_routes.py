@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, send_from_directory
 from file_utils import allowed_file, save_file
+from config import Config
 
 file_routes = Blueprint('file_routes', __name__)
 
@@ -22,3 +23,7 @@ def upload_file():
         return render_template('result.html', filename=filename)
 
     return render_template('index.html', error="Fichier invalide. Veuillez télécharger une image.")
+
+@file_routes.route('/uploaded_file/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(Config.UPLOAD_FOLDER, filename)
