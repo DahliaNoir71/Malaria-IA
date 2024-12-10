@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template, request, send_from_directory
+import os
+
+from flask import Blueprint, render_template, request, send_from_directory, redirect, url_for
 from file_utils import allowed_file, save_file
 from config import Config
 
@@ -34,3 +36,13 @@ def upload_file():
 @file_routes.route('/uploaded_file/<filename>')
 def uploaded_file(filename):
     return send_from_directory(Config.UPLOAD_FOLDER, filename)
+
+@file_routes.route('/delete_file/<filename>', methods=['POST'])
+def delete_file(filename):
+    # Construire le chemin complet de l'image
+    file_path = os.path.join(Config.UPLOAD_FOLDER, filename)
+    # Vérifier si le fichier existe, puis le supprimer
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    # Rediriger vers la page d'accueil
+    return redirect(url_for('file_routes.index'))

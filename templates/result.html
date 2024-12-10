@@ -48,7 +48,9 @@
     </div>
 
     <div class="text-center mt-3">
-        <a href="/" class="btn btn-primary">Retour à l'accueil</a>
+        <form action="/delete_file/{{ filename }}" method="post">
+            <button type="submit" class="btn btn-primary">Retour à l'accueil</button>
+        </form>
     </div>
 </div>
 

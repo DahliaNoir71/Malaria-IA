@@ -21,4 +21,4 @@ def predict(filename):
 
     # Passer le chemin de l'image et le résultat au template result.html
     uploaded_image = f"/uploaded_file/{filename}"
-    return render_template('result.html', uploaded_image=uploaded_image, result=result)
+    return render_template('result.html', uploaded_image=uploaded_image, result=result, filename=filename)
