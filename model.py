@@ -16,7 +16,7 @@ def predict_malaria(filename):
 
         prediction = model.predict(img_array)
         print(prediction)
-        result = 'Infectée' if prediction[0] > 0.5 else 'Non infectée'
+        result = 'Infectée' if prediction[0] < 0.5 else 'Non infectée'
 
         return result, None  # Pas d'erreur
 
