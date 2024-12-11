@@ -16,4 +16,4 @@ app.config.from_object('config.Config')
 app.register_blueprint(file_routes)
 app.register_blueprint(predict_routes)
 
-app.run(debug=True, host='0.0.0.0', port=8000)
+app.run(debug=True, host='0.0.0.0', port=80)
